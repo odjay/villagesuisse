@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Village Suisse ONG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --primary: #2C5F2D;
+      --secondary: #97BC62;
+      --accent: #FFB347;
+      --text: #222;
+      --background: #f9f9f9;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--background);
+      color: var(--text);
+    }
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 1.5em 0 1em 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav {
+      margin: 1em 0 0 0;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1.5em;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+    .lang-switch {
+      position: absolute;
+      right: 1em;
+      top: 1em;
+      background: var(--accent);
+      color: #222;
+      border: none;
+      padding: 0.5em 1.2em;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .lang-switch:hover {
+      background: #f9c66a;
+    }
+    main {
+      max-width: 900px;
+      margin: 2em auto;
+      padding: 0 1em;
+    }
+    section {
+      margin-bottom: 2.5em;
+      padding: 1.5em;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(44,95,45,0.07);
+      animation: fadeInUp 0.7s;
+    }
+    h1, h2 {
+      color: var(--primary);
+    }
+    .projects {
+      display: flex;
+      gap: 2em;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .project-card {
+      background: var(--secondary);
+      color: #fff;
+      flex: 1 1 250px;
+      margin: 0.5em 0;
+      border-radius: 8px;
+      padding: 1em;
+      box-shadow: 0 2px 8px rgba(44,95,45,0.08);
+      min-width: 220px;
+      max-width: 300px;
+      text-align: center;
+    }
+    .project-card img {
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 0.7em;
+      max-height: 140px;
+      object-fit: cover;
+      background: #eee;
+    }
+    footer {
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 1em 0;
+      margin-top: 2em;
+      font-size: 0.95em;
+    }
+    @media (max-width: 700px) {
+      .projects { flex-direction: column; gap: 1em; }
+      nav a { margin: 0 0.7em; font-size: 1em; }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    /* Hide all language blocks by default */
+    .lang-block { display: none; }
+    .lang-block.active { display: block; }
+  </style>
+</head>
+<body>
+  <header>
+    <button class="lang-switch" id="langBtn" aria-label="Changer de langue">EN</button>
+    <h1 class="lang-block lang-fr active">Village Suisse ONG</h1>
+    <h1 class="lang-block lang-en">Village Suisse NGO</h1>
+    <nav>
+      <a href="#home" class="lang-block lang-fr active">Accueil</a>
+      <a href="#projects" class="lang-block lang-fr active">Projets</a>
+      <a href="#about" class="lang-block lang-fr active">À propos</a>
+      <a href="#contact" class="lang-block lang-fr active">Contact</a>
+      <a href="#home" class="lang-block lang-en">Home</a>
+      <a href="#projects" class="lang-block lang-en">Projects</a>
+      <a href="#about" class="lang-block lang-en">About</a>
+      <a href="#contact" class="lang-block lang-en">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <!-- French Content -->
+    <section id="home" class="lang-block lang-fr active">
+      <h2>Construire un avenir meilleur ensemble</h2>
+      <p>Engagés pour le développement durable et l'autonomisation des communautés.</p>
+    </section>
+    <section id="projects" class="lang-block lang-fr active">
+      <h2>Nos Projets</h2>
+      <div class="projects">
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Projet Douala">
+          <h3>Centre éducatif de Douala</h3>
+          <p>Éducation et formation professionnelle pour les jeunes.</p>
+        </div>
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Projet Jeunesse">
+          <h3>Programme Jeunesse</h3>
+          <p>Autonomisation des jeunes par le sport et la culture.</p>
+        </div>
+      </div>
+    </section>
+    <section id="about" class="lang-block lang-fr active">
+      <h2>À propos</h2>
+      <p>
+        Village Suisse ONG est une organisation basée à Genève, engagée dans le développement durable, l'éducation et l'autonomisation des communautés depuis 2005.
+      </p>
+    </section>
+    <section id="contact" class="lang-block lang-fr active">
+      <h2>Contact</h2>
+      <p>Email : <a href="mailto:info@villagesuisseong.org">info@villagesuisseong.org</a></p>
+      <p>Adresse : Genève, Suisse</p>
+    </section>
+    <!-- English Content -->
+    <section id="home" class="lang-block lang-en">
+      <h2>Building a Better Future Together</h2>
+      <p>Committed to sustainable development and community empowerment.</p>
+    </section>
+    <section id="projects" class="lang-block lang-en">
+      <h2>Our Projects</h2>
+      <div class="projects">
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Douala Project">
+          <h3>Douala Educational Center</h3>
+          <p>Education and vocational training for youth.</p>
+        </div>
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Youth Project">
+          <h3>Youth Program</h3>
+          <p>Youth empowerment through sports and culture.</p>
+        </div>
+      </div>
+    </section>
+    <section id="about" class="lang-block lang-en">
+      <h2>About</h2>
+      <p>
+        Village Suisse NGO is a Geneva-based organization dedicated to sustainable development, education, and community empowerment since 2005.
+      </p>
+    </section>
+    <section id="contact" class="lang-block lang-en">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:info@villagesuisseong.org">info@villagesuisseong.org</a></p>
+      <p>Address: Geneva, Switzerland</p>
+    </section>
+  </main>
+  <footer>
+    <span class="lang-block lang-fr active">&copy; Village Suisse ONG 2025 – Genève, Suisse</span>
+    <span class="lang-block lang-en">&copy; Village Suisse NGO 2025 – Geneva, Switzerland</span>
+  </footer>
+  <script>
+    // Language toggling logic
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('.lang-block').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.lang-' + lang).forEach(el => el.classList.add('active'));
+      document.getElementById('langBtn').textContent = lang === 'fr' ? 'EN' : 'FR';
+      localStorage.setItem('lang', lang);
+    }
+    // On load: set language from storage or browser
+    (function() {
+      let lang = localStorage.getItem('lang') || (navigator.language.startsWith('fr') ? 'fr' : 'en');
+      setLang(lang);
+      document.getElementById('langBtn').onclick = function() {
+        setLang(document.documentElement.lang === 'fr' ? 'en' : 'fr');
+      };
+    })();
+  </script>
+</body>
+</html>
