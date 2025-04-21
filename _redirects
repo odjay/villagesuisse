@@ -1,0 +1,4 @@
+/* /en/index.html 200
+/ /en/ 301
+/fr/* /fr/:splat 200
+/en/* /en/:splat 200

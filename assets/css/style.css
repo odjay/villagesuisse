@@ -1,0 +1,27 @@
+:root {
+    --primary: #2C5F2D;
+    --secondary: #97BC62;
+    --text: #333;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+.lang-switch {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 8px 15px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem;
+}
