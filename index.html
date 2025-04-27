@@ -1,207 +1,164 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Village Suisse ONG</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body { scroll-behavior: smooth; }
-    section { padding: 60px 0; }
-    .navbar-nav .nav-item .dropdown-menu { background: #f8f9fa; }
-    .bg-header { background: #1565c0; color: #fff; }
-    .section-title { margin-bottom: 30px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Village Suisse ONG - Solidarité Genève & Afrique</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rouge-suisse: #CD2532;
+            --vert-afrique: #079248;
+            --jaune-or: #FEC501;
+            --blanc: #FFFFFF;
+            --noir: #222222;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            background: var(--blanc);
+            scroll-behavior: smooth;
+        }
+
+        .swiss-cross {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23fff' d='M16 0h-6v32h6V0zm0 0v32h6V0h-6z'/%3E%3C/svg%3E");
+            background-size: 40px;
+            opacity: 0.1;
+        }
+
+        .african-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0l20 20-20 20L0 20 20 0zm0 5l-2.5 2.5L20 10l2.5-2.5L20 5zm-15 15L0 20l5-5 2.5 2.5L5 20zm30 0l-5-5 2.5-2.5 5 5-2.5 2.5zM20 35l2.5-2.5L20 30l-2.5 2.5L20 35z' fill='%23079248' fill-opacity='0.15'/%3E%3C/svg%3E");
+        }
+
+        .nav-swiss {
+            background: var(--rouge-suisse) !important;
+            border-bottom: 3px solid var(--jaune-or);
+        }
+
+        .section-title {
+            color: var(--vert-afrique);
+            border-left: 5px solid var(--rouge-suisse);
+            padding-left: 1rem;
+        }
+
+        .timeline-item {
+            border-left: 3px solid var(--rouge-suisse);
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-card {
+            border: 2px solid var(--vert-afrique);
+            transition: transform 0.3s;
+        }
+    </style>
 </head>
-<body>
-  <!-- Header & Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-header sticky-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Village Suisse ONG</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#accueil">Accueil</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="ongDropdown" role="button" data-bs-toggle="dropdown">
-              Notre ONG
+<body class="swiss-cross">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark nav-swiss fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="logo-ong.svg" alt="Logo" style="height: 40px;">
+                <span class="ms-2">Village Suisse ONG</span>
             </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#historique">Historique</a></li>
-              <li><a class="dropdown-item" href="#equipe">Notre équipe</a></li>
-              <li><a class="dropdown-item" href="#presence">Présence dans le monde</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="#bulletin">Bulletin d'information</a></li>
-          <li class="nav-item"><a class="nav-link" href="#calendrier">Calendrier</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projets">Nos projets</a></li>
-          <li class="nav-item"><a class="nav-link" href="#actions">Actions concrètes</a></li>
-          <li class="nav-item"><a class="nav-link" href="#integration">Intégration des étrangers</a></li>
-          <li class="nav-item"><a class="nav-link" href="#partenaires">Partenaires</a></li>
-          <li class="nav-item"><a class="nav-link" href="#photos">Photos</a></li>
-          <!-- Ajoutez d'autres sections selon besoin -->
-        </ul>
-      </div>
-    </div>
-  </nav>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#accueil">Accueil</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#ong" role="button" data-bs-toggle="dropdown">
+                            Notre ONG
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#historique">Historique</a></li>
+                            <li><a class="dropdown-item" href="#equipe">Équipe</a></li>
+                            <li><a class="dropdown-item" href="#presence">Présence mondiale</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#projets">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#actions">Actions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-  <!-- Accueil -->
-  <section id="accueil">
-    <div class="container">
-      <h1 class="section-title">Accueil</h1>
-      <p><strong>Le mot de l'Administrateur Fondateur</strong></p>
-      <p>Excellences, Mesdames et Messieurs, Chers Amis et Chères Amies,</p>
-      <p>Je reviens de loin : déjà annoncé mort il y a quelques mois ...</p>
-      <p>Le coronavirus, les ONG et le développement</p>
-      <p>La Journée Internationale des ONG 2020, prévue le 12 décembre 2020, n'aura pas lieu en raison des mesures sanitaires que nous tenons à respecter.</p>
-      <p>Le calendrier des conférences ONU 2020 : Village Suisse ONG propose cette page comme outil pour ses membres afin qu'ils puissent se préparer à assister aux différentes conférences de l'ONU à Genève, Vienne et New-York.</p>
-      <p>Village Suisse ONG tient à saluer et féliciter chaleureusement S.E. Mme Tatiana Valovaya, première femme à diriger l'ONU à Genève.</p>
-    </div>
-  </section>
+    <!-- Sections de contenu -->
+    <main class="container mt-5 pt-5">
+        <!-- Accueil -->
+        <section id="accueil" class="my-5 py-5">
+            <h1 class="display-4 mb-4 section-title">Solidarité Internationale Depuis 1996</h1>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <img src="africa-swiss-hands.jpg" alt="Collaboration" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-md-6">
+                    <p class="lead">Village Suisse ONG œuvre depuis plus de 25 ans pour le développement durable et l'intégration sociale à Genève et en Afrique.</p>
+                    <div class="d-grid gap-2 d-md-block">
+                        <a href="#projets" class="btn btn-lg btn-africa">Nos Projets</a>
+                        <a href="#contact" class="btn btn-lg btn-swiss ms-2">Nous Soutenir</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- Historique -->
-  <section id="historique" class="bg-light">
-    <div class="container">
-      <h2 class="section-title">Historique</h2>
-      <p>1996, Création de l'Association Village Suisse ONG en Suisse avec Siège à Genève (Lancy).</p>
-      <p>2003, Premier Amendement des statuts de Village Suisse ONG par les fondateurs. Changement de nom en Village Suisse ONG.</p>
-      <p>2003, Village Suisse ONG participe au 1er Sommet Mondial (SMSI/WSIS) à Genève (PALEXPO).</p>
-      <p>2005, Organisation du 2ème Sommet de la Société de l'Information (SMSI) à Tunis. Village Suisse ONG présente un Atelier sur les TICS.</p>
-      <p>2006, Première Réunion des ONG organisée par la Confédération Suisse au BIT. Village Suisse ONG y participe activement avec son réseau africain.</p>
-      <p>2008, Village Suisse ONG obtient le Statut consultatif ECOSOC à l'ONU. Participation à la CNUCED/UNCTAD au Ghana (ACCRA).</p>
-      <p>2007-2011, Célébration des Fêtes Genevoise des ONG à Genève (Lancy). Spécialisation dans l'aide aux enfants défavorisés et ouverture de représentations en Afrique (plus de 37 pays).</p>
-      <p>2012, Soutien de la Confédération Suisse à Village Suisse ONG au CICG. L'ONU accorde une bourse à Village Suisse ONG pour la CNUCED/UNCTAD au Qatar (DOHA).</p>
-      <p>2013, Présence à la Réunion ONU FEMMES à NEW YORK.</p>
-      <p>2015, Création officielle de la Journée Internationale Annuelle des ONG à ONU Genève. Sélection à la Journée Portes ouvertes 70 ans des Nations Unies.</p>
-      <p>2016-2018, Célébration des éditions successives de la Journée Internationale Annuelle des ONG à Genève.</p>
-      <p>2019, Concert de Bienfaisance de la Société civile avec des orchestres africains à Genève.</p>
-    </div>
-  </section>
+        <!-- Historique -->
+        <section id="historique" class="my-5 py-5 african-pattern">
+            <h2 class="mb-5 section-title">Notre Parcours</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>1996 - Fondation à Genève</h3>
+                    <p>Création de l'association avec pour mission de réduire la fracture numérique Nord-Sud.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>2003 - Statut Consultatif ECOSOC</h3>
+                    <p>Reconnaissance officielle par les Nations Unies de notre action internationale.</p>
+                </div>
+                <!-- Ajouter d'autres éléments historiques -->
+            </div>
+        </section>
 
-  <!-- Notre équipe (Placeholder) -->
-  <section id="equipe">
-    <div class="container">
-      <h2 class="section-title">Notre équipe</h2>
-      <p>Section à compléter avec la présentation de l'équipe dirigeante et des membres actifs.</p>
-    </div>
-  </section>
+        <!-- Projets -->
+        <section id="projets" class="my-5 py-5">
+            <h2 class="mb-5 section-title">Nos Initiatives Clés</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="project-card h-100 p-4 rounded">
+                        <h3>Centre de Formation de Douala</h3>
+                        <p>Formation aux NTIC pour 500+ femmes annuellement</p>
+                        <div class="progress mb-3">
+                            <div class="progress-bar" style="width: 75%">75% Complété</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Ajouter d'autres projets -->
+            </div>
+        </section>
+    </main>
 
-  <!-- Présence dans le monde -->
-  <section id="presence" class="bg-light">
-    <div class="container">
-      <h2 class="section-title">Notre présence dans le monde</h2>
-      <p>Village Suisse ONG est présente dans plus de 37 pays, principalement en Afrique, avec des représentations actives et des projets locaux.</p>
-    </div>
-  </section>
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h4>Contact</h4>
+                    <p>Village Suisse ONG<br>Route de Chêne 120<br>1201 Genève</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Réseaux</h4>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-2">LinkedIn</a>
+                        <a href="#" class="text-white me-2">Twitter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-  <!-- Bulletin d'information -->
-  <section id="bulletin">
-    <div class="container">
-      <h2 class="section-title">Bulletin d'information</h2>
-      <p>Vous n'êtes pas encore abonné à notre Bulletin d'informations et désirez le recevoir ?</p>
-      <p>Vous voudriez nous poser une question précise sur quelques domaines précis de Village Suisse ONG ou nous faire part d'une proposition pertinente ?</p>
-      <p>N'hésitez pas : contactez-nous ou cliquez sur "Nous aider".</p>
-      <p>Notre tout premier Bulletin d'information. Une autre série de nos Bulletins récents sera publiée ici tout prochainement.</p>
-    </div>
-  </section>
-
-  <!-- Calendrier -->
-  <section id="calendrier" class="bg-light">
-    <div class="container">
-      <h2 class="section-title">Calendrier</h2>
-      <p>Conférences ONU 2020 pour les membres de Village Suisse ONG et toute personne intéressée :</p>
-      <ul>
-        <li>Conférences ouvertes aux ONG avec statut consultatif ECOSOC</li>
-        <li>Nouvelle date pour AI for Good</li>
-        <li>Conférences OHCHCR (droits de l'homme)</li>
-        <li>Conférence "Le Multilatéralisme à l’heure du COVID-19" le 24.04.2020</li>
-        <li>Secretary‐General’s virtual Townhall Meeting with Women’s Civil Society – 31.08.2020</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Nos projets -->
-  <section id="projets">
-    <div class="container">
-      <h2 class="section-title">Nos projets</h2>
-      <p><strong>Centre de formation de Douala</strong> : Formation aux NTICs, principalement pour les femmes, en partenariat avec la Fondation Généreuse Développement. Actions éducatives sur l’éducation des jeunes filles, le HIV/SIDA, etc.</p>
-      <p><strong>Ordinateur au service de l’éducation</strong> : Projet d’aide aux écoles du Cameroun et du tiers-monde pour l’accès aux nouvelles technologies. Sensibilisation en Suisse pour soutenir la jeunesse du Sud.</p>
-      <p><strong>Récupération de matériel scolaire et informatique</strong> : Collecte à Genève et en Suisse pour équiper les écoles du Sud.</p>
-      <p><strong>Bénéficiaires</strong> : Deux établissements au Cameroun (Douala et Tavaïolle Illanga-Eséka) servent de référence. Ouvert aux jeunes suisses souhaitant visiter ces écoles.</p>
-      <p><strong>Communication entre jeunes</strong> : Projet avec l’Association Pangea et l’Université de Genève pour favoriser le dialogue entre jeunes suisses et africains.</p>
-      <p><strong>Comment participer ?</strong> : Toute personne ou organisation peut rejoindre l’équipe, aider à la collecte, ou proposer des idées.</p>
-    </div>
-  </section>
-
-  <!-- Nos actions concrètes -->
-  <section id="actions" class="bg-light">
-    <div class="container">
-      <h2 class="section-title">Nos actions concrètes</h2>
-      <ul>
-        <li>Réduction de la fracture numérique Nord/Sud et recyclage du matériel informatique.</li>
-        <li>Logement social à Yaoundé.</li>
-        <li>Aide à l’intégration sociale en Suisse.</li>
-        <li>Formation aux droits de l’Homme.</li>
-        <li>Participation aux activités des Nations Unies.</li>
-        <li>Collecte de matériel scolaire et informatique pour les plus démunis.</li>
-        <li>Manifestations culturelles et humanitaires en Suisse pour sensibiliser à l’éducation, la solidarité, le commerce équitable, et l’environnement.</li>
-        <li>Voyages culturels humanitaires pour jeunes suisses au Cameroun.</li>
-        <li>Bureau de représentation au Cameroun.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Intégration des étrangers -->
-  <section id="integration">
-    <div class="container">
-      <h2 class="section-title">Intégration des étrangers</h2>
-      <p>Depuis le 10 mars 2002, Village Suisse ONG fait partie du FIM-Suisse (Forum pour l’Intégration des Migrant(e)s en Suisse). Un membre élu à la direction, représentant les migrants de 150 pays, dont 50'000 africains.</p>
-      <p>Participation à Expo 02, soutien de la Commission fédérale des étrangers, assises nationales d'intégration, et campagnes pour la naturalisation.</p>
-    </div>
-  </section>
-
-  <!-- Nos partenaires -->
-  <section id="partenaires" class="bg-light">
-    <div class="container">
-      <h2 class="section-title">Nos partenaires</h2>
-      <p>Merci aux donateurs, subventionnaires, autorités, partenaires suisses, genevois, camerounais et africains qui nous soutiennent.</p>
-      <ul>
-        <li>Lutte contre la pauvreté</li>
-        <li>Intégration, accueil et encadrement des africain(e)s en Suisse</li>
-        <li>Autorités suisses et africaines</li>
-        <li>Missions diplomatiques et d'observation à l'ONU Genève</li>
-        <li>ONG africaines et des pays du Sud</li>
-        <li>ONG en Suisse et en Europe</li>
-        <li>Organisations internationales</li>
-        <li>Entreprises</li>
-      </ul>
-      <p>Félicitations et encouragements reçus du Conseil Fédéral, du Président de l'AG de l'ONU, et de l'Ambassadeur du Burkina Faso en Suisse.</p>
-    </div>
-  </section>
-
-  <!-- Photos -->
-  <section id="photos">
-    <div class="container">
-      <h2 class="section-title">Photos de nos activités à l'ONU</h2>
-      <p>Résumé en images de nos activités à l'ONU. (Galerie à intégrer avec vos images, par exemple via un carousel Bootstrap ou une grille d’images.)</p>
-      <!-- Exemple de galerie Bootstrap -->
-      <div class="row">
-        <div class="col-md-3 mb-3"><img src="assets/photo1.jpg" class="img-fluid rounded" alt="Activité 1"></div>
-        <div class="col-md-3 mb-3"><img src="assets/photo2.jpg" class="img-fluid rounded" alt="Activité 2"></div>
-        <div class="col-md-3 mb-3"><img src="assets/photo3.jpg" class="img-fluid rounded" alt="Activité 3"></div>
-        <div class="col-md-3 mb-3"><img src="assets/photo4.jpg" class="img-fluid rounded" alt="Activité 4"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-header text-center py-4 mt-5">
-    <div class="container">
-      <span>© Village Suisse ONG - Genève</span>
-    </div>
-  </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
