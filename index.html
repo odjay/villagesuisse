@@ -4,9 +4,8 @@
   <meta charset="UTF-8">
   <title>Village Suisse ONG – Genève & Afrique</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Google Fonts pour une typo moderne -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Bootstrap pour la structure -->
+  <!-- Google Fonts pour une typo moderne et lisible -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     :root {
@@ -18,33 +17,93 @@
       --blanc: #fff;
       --noir: #222;
     }
+    html { scroll-padding-top: 68px; }
     body {
       font-family: 'Montserrat', Arial, sans-serif;
       background: var(--gris-fond);
       color: var(--noir);
     }
-    .navbar {
+    /* HEADER */
+    .main-header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
       background: linear-gradient(90deg, var(--rouge-suisse) 70%, var(--vert-afrique) 100%);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: all 0.3s cubic-bezier(.4,0,.2,1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      padding: 0.2rem 0;
     }
-    .navbar-brand {
-      font-weight: 700;
+    .main-header.shrink {
+      padding: 0rem 0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .main-header .navbar-brand {
+      font-weight: 900;
       letter-spacing: 1px;
       color: var(--blanc) !important;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: font-size 0.3s;
     }
-    .navbar-nav .nav-link {
+    .main-header.shrink .navbar-brand { font-size: 1.05rem; }
+    .main-header .flag {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      object-fit: cover;
+      transition: width 0.3s, height 0.3s;
+    }
+    .main-header.shrink .flag {
+      width: 18px;
+      height: 18px;
+    }
+    .main-header .navbar-nav .nav-link {
       color: var(--blanc) !important;
-      font-weight: 500;
-      margin-right: 0.5rem;
+      font-weight: 600;
+      margin-right: 0.25rem;
+      transition: color 0.2s;
+      font-size: 1.02rem;
+      padding: 0.5rem 0.8rem;
     }
-    .navbar-nav .nav-link.active, .navbar-nav .nav-link:hover {
+    .main-header .nav-link.active, .main-header .nav-link:hover {
       color: var(--jaune-afrique) !important;
     }
+    .main-header .navbar-toggler {
+      border: none;
+      background: var(--vert-afrique);
+      padding: 0.4rem 0.7rem;
+      border-radius: 8px;
+    }
+    .main-header .navbar-toggler:focus {
+      outline: 2px solid var(--jaune-afrique);
+    }
+    @media (max-width: 991px) {
+      .main-header .navbar-nav .nav-link {
+        padding: 0.7rem 1rem;
+        font-size: 1.1rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .main-header .navbar-brand {
+        font-size: 1rem;
+      }
+      .main-header .flag {
+        width: 16px;
+        height: 16px;
+      }
+      .main-header.shrink .navbar-brand {
+        font-size: 0.95rem;
+      }
+    }
+    /* SECTIONS */
     .section {
-      border-radius: 28px;
+      border-radius: 22px;
       margin-bottom: 2.5rem;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-      padding: 3rem 2rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      padding: 2.1rem 1.2rem;
       background: var(--blanc);
     }
     .section.alt {
@@ -52,54 +111,46 @@
       color: var(--blanc);
     }
     .section-title {
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 700;
-      margin-bottom: 1.5rem;
-      letter-spacing: 0.5px;
+      margin-bottom: 1.2rem;
       display: flex;
       align-items: center;
       gap: 0.6rem;
     }
-    .section-title .flag {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    }
     .motif {
       width: 100%;
-      height: 18px;
+      height: 14px;
       background: repeating-linear-gradient(90deg, var(--orange-afrique), var(--orange-afrique) 12px, var(--jaune-afrique) 12px, var(--jaune-afrique) 24px, var(--vert-afrique) 24px, var(--vert-afrique) 36px, var(--rouge-suisse) 36px, var(--rouge-suisse) 48px);
-      opacity: 0.15;
-      margin: 2rem 0;
-      border-radius: 10px;
+      opacity: 0.18;
+      margin: 1.2rem 0 1.9rem 0;
+      border-radius: 8px;
     }
     .timeline {
       border-left: 4px solid var(--rouge-suisse);
       margin-left: 1rem;
-      padding-left: 2rem;
+      padding-left: 1.2rem;
     }
     .timeline-item {
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       position: relative;
     }
     .timeline-item:before {
       content: '';
       position: absolute;
-      left: -2.1rem;
+      left: -1.3rem;
       top: 0.4rem;
-      width: 18px;
-      height: 18px;
+      width: 13px;
+      height: 13px;
       background: var(--jaune-afrique);
       border-radius: 50%;
       border: 3px solid var(--rouge-suisse);
     }
     .gallery img {
       width: 100%;
-      border-radius: 12px;
+      border-radius: 10px;
       margin-bottom: 1rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.09);
       transition: transform 0.2s;
     }
     .gallery img:hover {
@@ -110,9 +161,9 @@
       color: var(--noir);
       font-weight: 600;
       border: none;
-      border-radius: 24px;
-      padding: 0.7rem 2rem;
-      margin-top: 1rem;
+      border-radius: 22px;
+      padding: 0.6rem 1.5rem;
+      margin-top: 0.7rem;
       transition: background 0.2s;
     }
     .btn-african:hover {
@@ -123,45 +174,48 @@
       background: linear-gradient(90deg, var(--rouge-suisse) 70%, var(--vert-afrique) 100%);
       color: var(--blanc);
       text-align: center;
-      padding: 2rem 0 1rem 0;
-      border-radius: 32px 32px 0 0;
-      margin-top: 3rem;
-      font-size: 1.1rem;
+      padding: 1.3rem 0 0.7rem 0;
+      border-radius: 22px 22px 0 0;
+      margin-top: 2.2rem;
+      font-size: 1.08rem;
     }
     @media (max-width: 768px) {
-      .section { padding: 1.2rem 0.5rem; }
-      .section-title { font-size: 1.4rem; }
-      .timeline { padding-left: 1rem; }
+      .section { padding: 1rem 0.3rem; }
+      .section-title { font-size: 1.2rem; }
+      .timeline { padding-left: 0.5rem; }
     }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg" alt="Suisse" class="flag" style="margin-right:0.4rem;">
-        Village Suisse ONG
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Flag_of_Africa.svg" alt="Afrique" class="flag" style="margin-left:0.4rem;">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="#accueil">Accueil</a></li>
-          <li class="nav-item"><a class="nav-link" href="#historique">Historique</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projets">Projets</a></li>
-          <li class="nav-item"><a class="nav-link" href="#actions">Actions</a></li>
-          <li class="nav-item"><a class="nav-link" href="#integration">Intégration</a></li>
-          <li class="nav-item"><a class="nav-link" href="#partenaires">Partenaires</a></li>
-          <li class="nav-item"><a class="nav-link" href="#bulletin">Bulletin</a></li>
-          <li class="nav-item"><a class="nav-link" href="#calendrier">Calendrier</a></li>
-          <li class="nav-item"><a class="nav-link" href="#photos">Photos</a></li>
-        </ul>
+  <!-- HEADER -->
+  <header class="main-header" id="mainHeader">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg" alt="Suisse" class="flag">
+          Village Suisse ONG
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Flag_of_Africa.svg" alt="Afrique" class="flag">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link active" href="#accueil">Accueil</a></li>
+            <li class="nav-item"><a class="nav-link" href="#historique">Historique</a></li>
+            <li class="nav-item"><a class="nav-link" href="#presence">Présence</a></li>
+            <li class="nav-item"><a class="nav-link" href="#projets">Projets</a></li>
+            <li class="nav-item"><a class="nav-link" href="#actions">Actions</a></li>
+            <li class="nav-item"><a class="nav-link" href="#integration">Intégration</a></li>
+            <li class="nav-item"><a class="nav-link" href="#partenaires">Partenaires</a></li>
+            <li class="nav-item"><a class="nav-link" href="#bulletin">Bulletin</a></li>
+            <li class="nav-item"><a class="nav-link" href="#calendrier">Calendrier</a></li>
+            <li class="nav-item"><a class="nav-link" href="#photos">Photos</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
   <!-- ACCUEIL -->
   <div class="motif"></div>
@@ -171,72 +225,44 @@
       Village Suisse ONG
       <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Flag_of_Africa.svg" class="flag" alt="Afrique">
     </h1>
-    <p class="lead">Avec statut consultatif UN ECOSOC – Genève & Afrique</p>
+    <p class="lead"><strong>Avec statut consultatif UN ECOSOC – Genève & Afrique</strong></p>
     <p><strong>Le mot de l'Administrateur Fondateur :</strong> Excellences, Mesdames et Messieurs, Chers Amis et Chères Amies,<br>
     Je reviens de loin : déjà annoncé mort il y a quelques mois...<br>
-    <em>Le coronavirus, les ONG et le développement</em><br>
-    La Journée Internationale des ONG 2020, prévue le 12 décembre 2020, n'aura pas lieu en raison des mesures sanitaires. Retrouvez le calendrier des conférences ONU 2020 ci-dessous.</p>
+    <em>Le coronavirus, les ONG et le développement</em></p>
+    <p>La Journée Internationale des ONG 2020, prévue le 12 décembre 2020, n'aura pas lieu en raison des mesures sanitaires. Retrouvez le calendrier des conférences ONU 2020 ci-dessous.<br>
+    Village Suisse ONG propose cette page comme outil pour ses membres afin qu'ils puissent se préparer à assister aux différentes conférences de l'ONU à Genève, Vienne et New-York.</p>
     <a href="#projets" class="btn btn-african">Découvrir nos projets</a>
   </section>
 
   <!-- HISTORIQUE -->
   <div class="motif"></div>
   <section id="historique" class="section alt">
-    <h2 class="section-title">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg" class="flag" alt="">
-      Historique
-    </h2>
+    <h2 class="section-title"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg" class="flag" alt="">Historique</h2>
     <div class="timeline">
-      <div class="timeline-item">
-        <h4>1996</h4>
-        <p>Création de l'Association Village Suisse ONG à Genève (Lancy).</p>
-      </div>
-      <div class="timeline-item">
-        <h4>2003</h4>
-        <p>Premier amendement des statuts, changement de nom, participation au 1er Sommet Mondial de la Société de l'Information (SMSI) à Genève.</p>
-      </div>
-      <div class="timeline-item">
-        <h4>2005</h4>
-        <p>Organisation du 2ème Sommet SMSI à Tunis, atelier sur les TICS.</p>
-      </div>
-      <div class="timeline-item">
-        <h4>2006</h4>
-        <p>Participation à la 1ère réunion des ONG organisée par la Confédération Suisse au BIT, avec des membres venus d'Afrique.</p>
-      </div>
-      <div class="timeline-item">
-        <h4>2008</h4>
-        <p>Obtention du statut consultatif ECOSOC à l'ONU. Participation à la CNUCED/UNCTAD au Ghana.</p>
-      </div>
-      <div class="timeline-item">
-        <h4>2007-2011</h4>
-        <p>Célébration des Fêtes Genevoise des ONG à Genève, spécialisation dans l'aide aux enfants défavorisés, ouverture de représentations en Afrique (37 pays).</p>
-      </div>
-      <div class="timeline-item">
-        <h4>2012</h4>
-        <p>Soutien de la Confédération Suisse, bourse ONU pour la CNUCED/UNCTAD au Qatar.</p>
-      </div>
-      <div class="timeline-item">
-        <h4>2013</h4>
-        <p>Participation au Sommet Mondial des Femmes à l'ONU New York.</p>
-      </div>
-      <div class="timeline-item">
-        <h4>2015-2018</h4>
-        <p>Création et célébrations de la Journée Internationale Annuelle des ONG à Genève et à l'ONU.</p>
-      </div>
-      <div class="timeline-item">
-        <h4>2019</h4>
-        <p>Concert de bienfaisance avec des orchestres africains à Genève.</p>
-      </div>
+      <div class="timeline-item"><strong>1996</strong> – Création de l'Association Village Suisse ONG à Genève (Lancy).</div>
+      <div class="timeline-item"><strong>2003</strong> – Amendement des statuts, changement de nom, participation au 1er Sommet Mondial de la Société de l'Information (SMSI) à Genève.</div>
+      <div class="timeline-item"><strong>2005</strong> – Organisation du 2ème Sommet SMSI à Tunis, atelier sur les TICS.</div>
+      <div class="timeline-item"><strong>2006</strong> – Participation à la 1ère réunion des ONG organisée par la Confédération Suisse au BIT, avec des membres venus d'Afrique.</div>
+      <div class="timeline-item"><strong>2008</strong> – Obtention du statut consultatif ECOSOC à l'ONU. Participation à la CNUCED/UNCTAD au Ghana.</div>
+      <div class="timeline-item"><strong>2007-2011</strong> – Célébration des Fêtes Genevoise des ONG à Genève, spécialisation dans l'aide aux enfants défavorisés, ouverture de représentations en Afrique (37 pays).</div>
+      <div class="timeline-item"><strong>2012</strong> – Soutien de la Confédération Suisse, bourse ONU pour la CNUCED/UNCTAD au Qatar.</div>
+      <div class="timeline-item"><strong>2013</strong> – Participation au Sommet Mondial des Femmes à l'ONU New York.</div>
+      <div class="timeline-item"><strong>2015-2018</strong> – Création et célébrations de la Journée Internationale Annuelle des ONG à Genève et à l'ONU.</div>
+      <div class="timeline-item"><strong>2019</strong> – Concert de bienfaisance avec des orchestres africains à Genève.</div>
     </div>
+  </section>
+
+  <!-- PRESENCE DANS LE MONDE -->
+  <div class="motif"></div>
+  <section id="presence" class="section">
+    <h2 class="section-title"><img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Flag_of_Africa.svg" class="flag" alt="">Notre présence dans le monde</h2>
+    <p>Village Suisse ONG dispose de représentations dans plus de 37 pays, principalement en Afrique, et développe des projets locaux adaptés aux réalités de chaque région.</p>
   </section>
 
   <!-- PROJETS -->
   <div class="motif"></div>
   <section id="projets" class="section">
-    <h2 class="section-title">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Flag_of_Africa.svg" class="flag" alt="">
-      Nos projets
-    </h2>
+    <h2 class="section-title"><img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Flag_of_Africa.svg" class="flag" alt="">Nos projets</h2>
     <ul>
       <li><strong>Centre de formation de Douala :</strong> Formation aux NTICs pour les femmes, actions éducatives sur l'éducation, le HIV/SIDA, etc.</li>
       <li><strong>Ordinateur au service de l'éducation :</strong> Récupération de matériel informatique en Suisse pour les écoles du Cameroun et du Sud.</li>
@@ -244,16 +270,14 @@
       <li><strong>Voyages culturels :</strong> Accueil de jeunes suisses dans des établissements scolaires camerounais partenaires.</li>
       <li><strong>Collecte de matériel :</strong> Actions régulières à Genève et en Suisse pour équiper les écoles du Sud.</li>
     </ul>
+    <p>Pour participer ou proposer une idée, contactez-nous ou cliquez sur "Nous aider".</p>
     <a href="#contact" class="btn btn-african">Je veux aider !</a>
   </section>
 
   <!-- ACTIONS CONCRETES -->
   <div class="motif"></div>
   <section id="actions" class="section alt">
-    <h2 class="section-title">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Flag_of_Africa.svg" class="flag" alt="">
-      Nos actions concrètes
-    </h2>
+    <h2 class="section-title"><img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Flag_of_Africa.svg" class="flag" alt="">Nos actions concrètes</h2>
     <ul>
       <li>Réduction de la fracture numérique Nord/Sud et recyclage du matériel informatique.</li>
       <li>Logement social à Yaoundé, aide à l'intégration sociale en Suisse.</li>
@@ -268,20 +292,14 @@
   <!-- INTEGRATION DES ETRANGERS -->
   <div class="motif"></div>
   <section id="integration" class="section">
-    <h2 class="section-title">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg" class="flag" alt="">
-      Intégration des étrangers
-    </h2>
+    <h2 class="section-title"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg" class="flag" alt="">Intégration des étrangers</h2>
     <p>Depuis 2002, Village Suisse ONG est membre du FIM-Suisse (Forum pour l’Intégration des Migrant(e)s en Suisse). Un de nos membres siège à la direction, représentant les migrants de 150 pays, dont 50 000 africains. Participation à Expo 02, soutien de la Commission fédérale des étrangers, assises nationales d'intégration, campagnes pour la naturalisation.</p>
   </section>
 
   <!-- PARTENAIRES -->
   <div class="motif"></div>
   <section id="partenaires" class="section alt">
-    <h2 class="section-title">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg" class="flag" alt="">
-      Nos partenaires
-    </h2>
+    <h2 class="section-title"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg" class="flag" alt="">Nos partenaires</h2>
     <ul>
       <li>Merci aux donateurs, subventionnaires, autorités, partenaires suisses, genevois, camerounais et africains.</li>
       <li>Lutte contre la pauvreté, intégration et accueil des africain(e)s en Suisse.</li>
@@ -293,10 +311,7 @@
   <!-- BULLETIN D'INFORMATION -->
   <div class="motif"></div>
   <section id="bulletin" class="section">
-    <h2 class="section-title">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Flag_of_Africa.svg" class="flag" alt="">
-      Bulletin d'information
-    </h2>
+    <h2 class="section-title"><img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Flag_of_Africa.svg" class="flag" alt="">Bulletin d'information</h2>
     <p>Vous souhaitez recevoir notre bulletin d'information ou nous poser une question ? Contactez-nous ou cliquez sur "Nous aider".<br>
     Notre tout premier Bulletin d'information est en ligne. D'autres suivront prochainement.</p>
   </section>
@@ -304,10 +319,7 @@
   <!-- CALENDRIER -->
   <div class="motif"></div>
   <section id="calendrier" class="section alt">
-    <h2 class="section-title">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg" class="flag" alt="">
-      Calendrier pour les membres
-    </h2>
+    <h2 class="section-title"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Switzerland.svg" class="flag" alt="">Calendrier pour les membres</h2>
     <ul>
       <li>Conférences ONU 2020 pour les membres et toute personne intéressée.</li>
       <li>Conférences ouvertes aux ONG avec statut consultatif ECOSOC.</li>
@@ -321,10 +333,7 @@
   <!-- PHOTOS -->
   <div class="motif"></div>
   <section id="photos" class="section">
-    <h2 class="section-title">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Flag_of_Africa.svg" class="flag" alt="">
-      Photos de nos activités à l'ONU
-    </h2>
+    <h2 class="section-title"><img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Flag_of_Africa.svg" class="flag" alt="">Photos de nos activités à l'ONU</h2>
     <div class="row gallery">
       <div class="col-6 col-md-3"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Activité 1"></div>
       <div class="col-6 col-md-3"><img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Activité 2"></div>
@@ -348,5 +357,5 @@
     </div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+  <script>
+    // Shr
